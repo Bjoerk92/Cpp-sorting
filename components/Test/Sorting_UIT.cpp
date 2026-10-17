@@ -31,7 +31,7 @@ TEST(BubbleSort, SimpleTest)
 }
 
 /**
- * @brief Construct a Test bubblesort for dublicates and subranges in the array
+ * @brief Test BubbleSort with duplicate values and empty input.
  * 
  */
 TEST(BubbleSort, duplicates_and_empty_input)
@@ -62,6 +62,9 @@ TEST(SelectionSort, SimpleTest)
     EXPECT_TRUE(std::is_sorted(arr.begin(), arr.end()));
 }
 
+/**
+ * @brief Test SelectionSort with duplicate values and empty input.
+ */
 TEST(SelectionSort, duplicates_and_empty_input)
 {
     std::array<uint32_t, 7> arr = {4, 2, 4, 1, 2, 4, 1};
@@ -70,6 +73,36 @@ TEST(SelectionSort, duplicates_and_empty_input)
     Sorting<uint32_t> sort;
     sort.SelectionSort(arr.data(), arr.size());
     sort.SelectionSort(empty_arr.data(), empty_arr.size());
+
+    EXPECT_TRUE(std::is_sorted(arr.begin(), arr.end()));
+    EXPECT_EQ(arr, (std::array<uint32_t, 7>{1, 1, 2, 2, 4, 4, 4}));
+}
+
+/**
+ * @brief Test InsertionSort with an unsorted array of distinct values.
+ */
+TEST(InsertionSort, SimpleTest)
+{
+    std::array<uint8_t, 10> arr = {10, 8, 9, 1, 3, 2, 4, 5, 6, 7};
+
+    Sorting<uint8_t> sort;
+    sort.InsertionSort(arr.data(), arr.size());
+
+    EXPECT_TRUE(std::is_sorted(arr.begin(), arr.end()));
+    EXPECT_EQ(arr, (std::array<uint8_t, 10>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
+}
+
+/**
+ * @brief Test InsertionSort with duplicate values and empty input.
+ */
+TEST(InsertionSort, duplicates_and_empty_input)
+{
+    std::array<uint32_t, 7> arr = {4, 2, 4, 1, 2, 4, 1};
+    std::array<uint32_t, 0> empty_arr = {};
+
+    Sorting<uint32_t> sort;
+    sort.InsertionSort(arr.data(), arr.size());
+    sort.InsertionSort(empty_arr.data(), empty_arr.size());
 
     EXPECT_TRUE(std::is_sorted(arr.begin(), arr.end()));
     EXPECT_EQ(arr, (std::array<uint32_t, 7>{1, 1, 2, 2, 4, 4, 4}));
