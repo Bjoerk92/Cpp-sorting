@@ -62,14 +62,9 @@ public:
      */
     void BubbleSort(T* buf, std::size_t num_elm) const
     {
-        BubbleSort(buf, 0, num_elm);
-    }
-
-    void BubbleSort(T* buf, std::size_t low, std::size_t high) const
-    {
-        for (std::size_t end = high; end > low + 1; --end)
+        for (std::size_t end = num_elm; end > 1; --end)
         {
-            for (std::size_t i = low; i + 1 < end; ++i)
+            for (std::size_t i = 0; i + 1 < end; ++i)
             {
                 if (buf[i] > buf[i + 1])
                 {
@@ -77,6 +72,29 @@ public:
                     buf[i] = buf[i + 1];
                     buf[i + 1] = temp;
                 }
+            }
+        }
+    }
+
+    void SelectionSort(T* buf, std::size_t num_elm) const
+    {
+        for (std::size_t i = 0; i + 1 < num_elm; ++i)
+        {
+            std::size_t lowest_index = i;
+
+            for (std::size_t j = i + 1; j < num_elm; ++j)
+            {
+                if (buf[j] < buf[lowest_index])
+                {
+                    lowest_index = j;
+                }
+            }
+
+            if (lowest_index != i)
+            {
+                T temp = buf[i];
+                buf[i] = buf[lowest_index];
+                buf[lowest_index] = temp;
             }
         }
     }
