@@ -106,6 +106,29 @@ public:
     }
 
     /**
+     * @brief Insertion sort
+     * 
+     * @param buf pointer to buffer that need sorting
+     * @param num_elm number of element in buffer
+     */
+    void InsertionSort(T* buf, std::size_t num_elm) const 
+    {
+        for (std::size_t i = 1; i < num_elm; ++i)
+        {
+            T key = buf[i];
+            std::size_t j = i;
+
+            while (j > 0 && buf[j - 1] > key)
+            {
+                buf[j] = buf[j - 1];
+                --j;
+            }
+
+            buf[j] = key;
+        }
+    }
+
+    /**
      * @brief Quick sort
      * 
      * @param buf pointer to the buffer that need sorting
