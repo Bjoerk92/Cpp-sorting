@@ -76,6 +76,12 @@ public:
         }
     }
 
+    /**
+     * @brief Selection sort
+     *  
+     * @param buf pointer to the buffer needed sorting
+     * @param num_elm number of element in buffer.
+     */
     void SelectionSort(T* buf, std::size_t num_elm) const
     {
         for (std::size_t i = 0; i + 1 < num_elm; ++i)
